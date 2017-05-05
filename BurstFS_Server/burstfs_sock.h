@@ -1,0 +1,59 @@
+ /*
+ * Copyright (c) 2017, Lawrence Livermore National Security, LLC.
+ * Produced at the Lawrence Livermore National Laboratory.
+ * Copyright (c) 2017, Florida State University. Contributions from
+ * the Computer Architecture and Systems Research Laboratory (CASTL)
+ * at the Department of Computer Science.
+ * Written by
+ * 	Teng Wang tw15g@my.fsu.edu
+ * 	Adam Moody moody20@llnl.gov
+ * 	Weikuan Yu wyu3@fsu.edu
+ * 	Kento Sato kento@llnl.gov
+ * 	Kathryn Mohror. kathryn@llnl.gov
+ * 	LLNL-CODE-728877.
+ * All rights reserved.
+ *
+ * This file is part of BurstFS For details, see https://github.com/llnl/burstfs.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights to
+ * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+ * the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *
+ */
+
+#ifndef BURSTFS_SOCK_H
+#define BURSTFS_SOCK_H
+#include <poll.h>
+#include  "burstfs_const.h"
+
+#define DEF_SOCK_PATH "/tmp/burstfs_server_sock"
+#define BURSTFS_SOCK_TIMEOUT 5000
+
+extern int server_sockfd;
+extern struct pollfd poll_set[MAX_NUM_CLIENTS];
+
+int sock_init_server(int local_rank_idx);
+int sock_add(int fd);
+void sock_reset();
+int sock_wait_cli_cmd();
+char *sock_get_cmd_buf(int sock_id);
+int sock_handle_error(int sock_error_no);
+int sock_get_id();
+int sock_get_error_id();
+int sock_ack_cli(int sock_id, int ret_sz);
+int sock_sanitize();
+char *sock_get_ack_buf(int sock_id);
+int sock_remove(int idx);
+int sock_notify_cli(int sock_id, int cmd);
+char *sock_get_cmd_buf(int sock_id);
+#endif
