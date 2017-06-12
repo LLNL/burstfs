@@ -12,12 +12,6 @@
 * Please read https://github.com/llnl/burstfs/LICENSE for full license text.
 */
 
-/*
- * MDHIM TNG
- * 
- * Data store abstraction
- */
-
 #ifndef      __STORE_H
 #define      __STORE_H
 
