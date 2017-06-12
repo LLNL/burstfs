@@ -12,12 +12,6 @@
 * Please read https://github.com/llnl/burstfs/LICENSE for full license text.
 */
 
-/*
- * MDHIM TNG
- * 
- * Index abstraction
- */
-
 #ifndef      __INDEX_H
 #define      __INDEX_H
 
