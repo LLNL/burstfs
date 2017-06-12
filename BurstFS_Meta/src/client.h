@@ -12,12 +12,6 @@
 * Please read https://github.com/llnl/burstfs/LICENSE for full license text.
 */
 
-/*
- * MDHIM TNG
- * 
- * Client specific implementation
- */
-
 #ifndef      __CLIENT_H
 #define      __CLIENT_H
 
