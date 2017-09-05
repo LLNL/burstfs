@@ -1598,8 +1598,8 @@ int CRUISE_WRAP(fsync)(int fd)
 								if (bytes_read == 0) return -1;
 								else {
 									/**/
-									if (ack_msg[0] != COMM_META ||\
-										 ack_msg[1] != ACK_SUCCESS) {
+									if (*((int *)cmd_buf) != COMM_META ||\
+										 *((int *)cmd_buf + 1) != ACK_SUCCESS) {
 										return -1;
 									} else {
 
@@ -1626,9 +1626,6 @@ int CRUISE_WRAP(fsync)(int fd)
         return ret;
     }
 	}
-
-
-
 
     /* check whether we should intercept this file descriptor */
     if (cruise_intercept_fd(&fd)) {
