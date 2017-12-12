@@ -431,7 +431,7 @@ int rm_process_received_msg(int app_id, int sock_id, \
 
 		/*the message buffer may contain a list of messages*/
 		tmp_recv_msg = (recv_msg_t *)(recv_msg_buf\
-				+ sizeof(int) + recv_cursor);
+				+ recv_cursor);
 
 	}
 
