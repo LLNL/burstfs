@@ -1445,12 +1445,7 @@ ssize_t CRUISE_WRAP(pread)(int fd, void *buf, size_t count, off_t offset)
         	tmp_req.fid = fd + cruise_fd_limit;
         	tmp_req.length = count;
         	tmp_req.offset = offset;
-        	int read_rc =  cruise_fd_logreadlist(&tmp_req, 1);
-
-        	if (read_rc == 0) {
-        		return count;
-        	} else
-        		return 0;
+        	return  cruise_fd_logreadlist(&tmp_req, 1);
         }
         /* return number of bytes read */
         return (ssize_t) retcount;
