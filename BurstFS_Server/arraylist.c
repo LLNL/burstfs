@@ -68,7 +68,8 @@ int arraylist_insert(arraylist_t *arr, int pos, void *elem) {
 	if (arr->elems[pos] != NULL)
 		free(arr->elems[pos]);
 	arr->elems[pos] = elem;
-	arr->size = pos + 1;
+    if (pos + 1 > arr->size)
+    	arr->size = pos + 1;
 	return 0;
 
 }
